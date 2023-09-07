@@ -1,0 +1,56 @@
+.container {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px;
+	border-radius: 0.3125rem;
+}
+
+/* ERROR Type */
+.error {
+	background-color: #fdf2f3;
+}
+.error.filled {
+	background-color: #e35053;
+}
+.error.outlined {
+	border: 1px solid #e35053;
+	background-color: unset;
+}
+
+/* INFO Type */
+.info {
+	background-color: #eef5ff;
+}
+.info.filled {
+	background-color: #0d6efd;
+}
+.info.outlined {
+	border: 1px solid #0d6efd;
+	background-color: unset;
+}
+
+/* SUCCESS Type */
+.success {
+	background-color: #eafbf3;
+}
+.success.filled {
+	background-color: #198754;
+}
+.success.outlined {
+	border: 1px solid #198754;
+	background-color: unset;
+}
+
+/* WARNING Type */
+.warning {
+	background-color: #fffbed;
+}
+.warning.filled {
+	background-color: #ffc107;
+}
+.warning.outlined {
+	border: 1px solid #ffc107;
+	background-color: unset;
+}

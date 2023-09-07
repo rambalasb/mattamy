@@ -1,0 +1,78 @@
+.container {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.left {
+	justify-content: space-between;
+}
+
+.component {
+	position: relative;
+	width: 70px;
+	height: 25px;
+}
+
+.toggleCheckbox {
+	opacity: 0;
+	width: 0;
+	height: 0;
+}
+
+.component .toggleCheckbox:disabled + .toggleBtn::before {
+	background-color: #6c757d;
+}
+
+.component .toggleBtn {
+	position: absolute;
+	cursor: pointer;
+	background-color: #adb5bd;
+	border-radius: 25px;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	transition: background-color 0.2s ease;
+}
+
+.component .toggleBtn::before {
+	position: absolute;
+	content: attr(data-no);
+	left: 2px;
+	top: 2px;
+	width: 21px;
+	height: 21px;
+	background-color: #fff;
+	border-radius: 50%;
+	transition: transform 0.3s ease;
+}
+
+.component .toggleCheckbox:checked + .toggleBtn::before {
+	transform: translateX(34px);
+	background-color: #fff;
+}
+
+.component .toggleCheckbox:checked + .toggleBtn.black {
+	background-color: #000;
+}
+
+.component .toggleCheckbox:checked + .toggleBtn.danger {
+	background-color: #e35053;
+}
+
+.component .toggleCheckbox:checked + .toggleBtn.primary {
+	background-color: #0d6efd;
+}
+
+.component .toggleCheckbox:checked + .toggleBtn.warning {
+	background-color: #ffc107;
+}
+
+.component .toggleCheckbox:checked + .toggleBtn.success {
+	background-color: #198754;
+}
+
+.component .toggleCheckbox:checked + .toggleBtn.secondary {
+	background-color: #6c757d;
+}

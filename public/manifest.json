@@ -1,0 +1,9 @@
+{
+	"short_name": "FE Accelerator",
+	"name": "React Front End Engineering Accelerator",
+	"icons": [],
+	"start_url": ".",
+	"display": "standalone",
+	"theme_color": "#000000",
+	"background_color": "#ffffff"
+}

@@ -1,0 +1,47 @@
+/*
+*	Place any styling that will be used acrross a lot of different 
+*	components.
+*/
+
+body {
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.error-input {
+	/* removing default appearance */
+	-webkit-appearance: none;
+	appearance: none;
+	/* Custom appearence */
+	border: 1px solid #e35053 !important;
+	box-shadow: 0 0 10px rgba(231, 111, 81);
+	border-radius: 2px;
+	width: 1.6em;
+	height: 1.6em;
+	outline: none;
+	cursor: pointer;
+}
+
+.error-label {
+	color: #e35053;
+	font-style: normal;
+	font-weight: normal;
+	line-height: 22px;
+	cursor: pointer;
+}
+
+.required-field {
+	color: #e35053;
+}
+
+input[type='checkbox']:disabled {
+	border: 1px solid #adb5bd;
+	background-color: rgb(33, 37, 41, 0.1);
+}
+
+.disabled-label {
+	color: #adb5bd;
+	font-style: normal;
+	font-weight: normal;
+	line-height: 22px;
+	cursor: pointer;
+}

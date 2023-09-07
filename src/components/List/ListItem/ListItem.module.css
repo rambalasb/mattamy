@@ -1,0 +1,20 @@
+.container {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: center;
+	list-style: none;
+	font-size: 0.875rem;
+	color: #2f2f2f;
+	height: fit-content;
+	cursor: pointer;
+	padding: 10px;
+}
+
+.container:hover {
+	background: #f4f4f4;
+}
+
+.container:not(:last-child) {
+	border-bottom: 0.0625rem solid #adb5bd;
+}

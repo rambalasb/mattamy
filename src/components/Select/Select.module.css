@@ -1,0 +1,137 @@
+.container {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.button {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	background: #fff;
+	height: fit-content;
+	width: 100%;
+	cursor: pointer;
+	border: 1px solid #adb5bd;
+	box-sizing: border-box;
+	border-radius: 8px;
+	color: #101820;
+	font-style: normal;
+	padding: 0;
+	text-indent: 15px;
+}
+.button:focus {
+	border-color: #62b5e5;
+	outline: none;
+}
+.button:disabled {
+	border: 1px solid #adb5bd;
+	background-color: rgb(33, 37, 41, 0.1);
+}
+.buttonActive {
+	color: #101820;
+}
+.buttonOpen {
+	outline: none;
+	border: 1px solid #62b5e5;
+	box-sizing: border-box;
+	box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+}
+
+.chevron {
+	padding: 10px 25px;
+	top: 0;
+	right: 0;
+	background-color: #62b5e5;
+	border-radius: 0 7px 7px 0;
+	display: flex;
+	align-items: center;
+	align-self: stretch;
+}
+.chevron svg {
+	width: 25px;
+	height: 25px;
+}
+.chevronOpen {
+	border-radius: 7px 0 0 7px;
+	transform: rotate(180deg);
+}
+.chevronError {
+	border-left: solid 1px #d0021b;
+}
+.chevronOpen.chevronError {
+	border-right: solid 1px #d0021b;
+	border-left: none;
+}
+
+.option {
+	margin-top: 5px;
+	border-radius: 10px;
+	background-color: #fff;
+	padding: 0;
+	max-height: 600px;
+	border: 1px solid grey;
+	width: 100%;
+}
+.option:focus {
+	border-color: #8cd2f4;
+}
+
+.item {
+	color: #101820;
+	border-bottom: 1px solid grey;
+	border-top: none;
+	cursor: pointer;
+	padding: 11px 12px;
+	list-style-type: none;
+}
+.itemSelected,
+.item:hover,
+.item:focus {
+	background-color: #8cd2f4;
+}
+
+.itemSelected:first-of-type,
+.item:hover:first-of-type,
+.item:focus:first-of-type {
+	border-top-right-radius: 9px;
+	border-top-left-radius: 9px;
+}
+.itemSelected:last-child,
+.item:hover:last-child,
+.item:focus:last-child {
+	border-bottom-right-radius: 9px;
+	border-bottom-left-radius: 9px;
+}
+
+.item:active {
+	color: #128fee;
+	background-color: #8cd2f4;
+}
+.item:last-child {
+	border-bottom: 0;
+}
+
+.tags {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 5px;
+	margin: 10px 0px;
+}
+.tags:first-child {
+	margin-left: 5px;
+}
+.tagItem {
+	background-color: rgb(33, 37, 41, 0.1);
+	padding: 10px 8px;
+	border-radius: 10px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+.tagItem svg {
+	height: 15px;
+	width: 15px;
+	margin-left: 10px;
+}

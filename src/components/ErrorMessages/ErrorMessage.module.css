@@ -1,0 +1,25 @@
+.container {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	border: 1px solid #e35053;
+	border-radius: 5px;
+	padding: 10px;
+}
+
+.container p {
+	margin-left: 20px;
+}
+
+.container svg {
+	width: 2.25rem;
+	height: 2.25rem;
+}
+
+.errorList li {
+	list-style: none;
+}
+
+.errorList li:not(:only-child) {
+	list-style: disc;
+}

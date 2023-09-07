@@ -1,0 +1,58 @@
+.overlay {
+	position: fixed;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	z-index: 9999;
+	background: rgb(0, 0, 0, 0.5);
+}
+
+.container {
+	background-color: #fff;
+	border-radius: 10px;
+	border: 1px solid #adb5bd;
+	width: 500px;
+	height: fit-content;
+	box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+}
+
+.header {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	padding: 10px;
+	border-bottom: 1px solid #adb5bd;
+}
+
+.close svg {
+	height: 15px;
+	width: 15px;
+}
+
+.body {
+	padding: 10px;
+}
+
+.footer {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: flex-end;
+	padding: 10px;
+	border-top: 1px solid #adb5bd;
+}
+
+.footerTwoBtn {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	padding: 10px;
+	border-top: 1px solid #adb5bd;
+}

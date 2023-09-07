@@ -1,0 +1,92 @@
+{
+	"name": "fe-accelerator",
+	"version": "0.1.0",
+	"private": true,
+	"scripts": {
+		"start": "react-scripts start",
+		"lint": "npm run type-check && next lint",
+		"format": "prettier --write .",
+		"build": "react-scripts build",
+		"test": "react-scripts test --watchAll=false",
+		"test:watch": "react-scripts test --watch",
+		"test:coverage": "react-scripts test --coverage --watchAll=false",
+		"test:ci": "react-scripts test --coverage --silent --runInBand --watchAll=false",
+		"eject": "react-scripts eject",
+		"storybook": "storybook dev -p 6006 -s public",
+		"build-storybook": "storybook build -s public"
+	},
+	"eslintConfig": {
+		"extends": [
+			"react-app",
+			"react-app/jest"
+		],
+		"overrides": [
+			{
+				"files": [
+					"**/*.stories.*"
+				],
+				"rules": {
+					"import/no-anonymous-default-export": "off"
+				}
+			}
+		]
+	},
+	"overrides": {
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0",
+		"react-refresh": "0.13.0"
+	},
+	"browserslist": {
+		"production": [
+			">0.2%",
+			"not dead",
+			"not op_mini all"
+		],
+		"development": [
+			"last 1 chrome version",
+			"last 1 firefox version",
+			"last 1 safari version"
+		]
+	},
+	"dependencies": {
+		"@azure/msal-browser": "^2.38.0",
+		"@azure/msal-react": "^1.5.9",
+		"@emotion/react": "^11.11.1",
+		"@emotion/styled": "^11.11.0",
+		"@mui/icons-material": "^5.14.3",
+		"@mui/material": "^5.14.2",
+		"@storybook/manager-api": "^7.0.10",
+		"@testing-library/jest-dom": "^5.16.5",
+		"@testing-library/react": "^13.4.0",
+		"@testing-library/user-event": "^13.5.0",
+		"date-fns": "^2.29.3",
+		"eslint": "^8.45.0",
+		"react": "^18.2.0",
+		"react-date-range": "^1.4.0",
+		"react-dom": "^18.2.0",
+		"react-router-dom": "^6.14.2",
+		"react-scripts": "5.0.1",
+		"web-vitals": "^2.1.4"
+	},
+	"devDependencies": {
+		"@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+		"@storybook/addon-a11y": "^7.0.10",
+		"@storybook/addon-actions": "^7.0.10",
+		"@storybook/addon-controls": "^7.0.10",
+		"@storybook/addon-essentials": "^7.0.10",
+		"@storybook/addon-interactions": "^7.0.10",
+		"@storybook/addon-links": "^7.0.10",
+		"@storybook/node-logger": "^7.0.10",
+		"@storybook/preset-create-react-app": "^7.0.10",
+		"@storybook/react": "^7.0.10",
+		"@storybook/react-webpack5": "^7.0.10",
+		"@storybook/testing-library": "^0.1.0",
+		"@storybook/testing-react": "^2.0.0",
+		"babel-plugin-named-exports-order": "^0.0.2",
+		"file-loader": "^6.2.0",
+		"prettier": "2.7.1",
+		"prop-types": "^15.8.1",
+		"storybook": "^7.0.10",
+		"webpack": "^5.74.0"
+	}
+}
