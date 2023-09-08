@@ -16,6 +16,7 @@ import Button from '@mui/material/Button'
 import { useIsAuthenticated, useMsal } from '@azure/msal-react'
 import { loginRequest } from '../../authConfig'
 import { useNavigate } from 'react-router-dom'
+import { useEffect } from 'react'
 
 const drawerWidth = 240
 const navItems = [
@@ -55,9 +56,11 @@ const NavigationBar = (props) => {
 
 	const isAuthenticated = useIsAuthenticated()
 
-	if (!isAuthenticated) {
-		handleLoginRedirect()
-	}
+	useEffect(() => {
+		if (!isAuthenticated) {
+			handleLoginRedirect()
+		}
+	})
 
 	const { window } = props
 	const [mobileOpen, setMobileOpen] = React.useState(false)
