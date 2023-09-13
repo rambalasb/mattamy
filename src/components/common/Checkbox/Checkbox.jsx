@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { styled } from '@mui/material/styles'
 import Checkbox from '@mui/material/Checkbox'
-import { ReactComponent as Checked } from 'assets/svgs/common/checked.svg'
+import { ReactComponent as Checked } from 'assets/svgs/checked.svg'
 const BpIcon = styled('span')(({ theme }) => ({
 	borderRadius: 50,
 	width: 44,
