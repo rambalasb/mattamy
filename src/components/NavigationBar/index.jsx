@@ -17,6 +17,11 @@ import { useIsAuthenticated, useMsal } from '@azure/msal-react'
 import { loginRequest } from '../../authConfig'
 import { useNavigate } from 'react-router-dom'
 import { useEffect } from 'react'
+import {
+	InteractionStatus,
+	InteractionType,
+	// InteractionRequiredAuthError,
+} from '@azure/msal-browser'
 
 const drawerWidth = 240
 const navItems = [
@@ -39,10 +44,9 @@ const navItems = [
 ]
 
 const NavigationBar = (props) => {
-	const { instance } = useMsal()
+	const { instance, inProgress } = useMsal()
 
 	const handleLoginRedirect = async () => {
-		console.log(loginRequest)
 		await instance
 			.loginRedirect({
 				loginRequest,
@@ -55,9 +59,19 @@ const NavigationBar = (props) => {
 	}
 
 	const isAuthenticated = useIsAuthenticated()
-
+	console.log(isAuthenticated, inProgress)
 	useEffect(() => {
-		if (!isAuthenticated) {
+		console.log(
+			'Interaction',
+			JSON.stringify(InteractionStatus),
+			JSON.stringify(InteractionType)
+		)
+		console.log('in use effect', isAuthenticated)
+		if (
+			!isAuthenticated &&
+			(inProgress === 'startup' || inProgress === 'handleRedirect')
+		) {
+			console.log('redirect')
 			handleLoginRedirect()
 		}
 	})
