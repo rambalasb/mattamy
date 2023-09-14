@@ -91,7 +91,7 @@ const MilestoneText = ({
 					transform: hovered ? 'scale(2)' : 'scale(1)',
 				}}
 			>
-				<Typography variant="titleSmall" color="#002D72">
+				<Typography variant="titleSmall" color="primary.main">
 					{title}
 				</Typography>
 			</Box>
@@ -104,7 +104,7 @@ const MilestoneText = ({
 					maxHeight: hovered ? '100px' : '0px',
 				}}
 			>
-				<Typography variant="bodySmall" color="#002D72" align="right">
+				<Typography variant="bodySmall" color="primary.main" align="right">
 					{description}
 				</Typography>
 			</Box>
@@ -114,7 +114,11 @@ const MilestoneText = ({
 					...textTransformation[currentIndex % textTransformation.length],
 				}}
 			>
-				<Typography variant="button" color="#0063C6" paddingRight={'4px'}>
+				<Typography
+					variant="button"
+					color="secondary.main"
+					paddingRight={'4px'}
+				>
 					{activeMilestoneIndex < currentIndex
 						? 'Preview this milestone'
 						: 'LEARN MORE'}

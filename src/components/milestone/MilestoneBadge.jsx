@@ -5,7 +5,7 @@ import { styled } from '@mui/system'
 import { ReactComponent as MilestoneIconCircleBorder } from 'assets/svgs/milestoneIconCircleBorder.svg'
 import { ReactComponent as MilestoneIconCompleted } from 'assets/svgs/milestoneIconCompleted.svg'
 
-const StyledBox = styled(Box)(({ ...props }) => ({
+const StyledBox = styled(Box)(({ theme, ...props }) => ({
 	top: '24px',
 	left: '24px',
 	position: 'absolute',
@@ -14,7 +14,10 @@ const StyledBox = styled(Box)(({ ...props }) => ({
 		height: '80px',
 	},
 	'& path': {
-		fill: props.activeMilestoneIndex < props.currentIndex ? '#97999B' : '',
+		fill:
+			props.activeMilestoneIndex < props.currentIndex
+				? theme.palette.primary.grey
+				: '',
 	},
 	display: props.activeMilestoneIndex > props.currentIndex ? 'none' : 'unset',
 }))
