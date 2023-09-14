@@ -13,7 +13,7 @@ import MenuIcon from '@mui/icons-material/Menu'
 import Toolbar from '@mui/material/Toolbar'
 import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
-import { useIsAuthenticated, useMsal } from '@azure/msal-react'
+import { useAccount, useIsAuthenticated, useMsal } from '@azure/msal-react'
 import { loginRequest } from '../../../authConfig'
 import { useNavigate } from 'react-router-dom'
 import { useEffect } from 'react'
@@ -44,37 +44,45 @@ const navItems = [
 ]
 
 const NavigationBar = (props) => {
-	const { instance, inProgress } = useMsal()
+	const isAuthenticated = useIsAuthenticated()
+	const { instance, inProgress, accounts } = useMsal()
+	const account = useAccount(accounts[0] || {})
 
 	const handleLoginRedirect = async () => {
-		await instance
-			.loginRedirect({
-				loginRequest,
-				onRedirectNavigate: (url) => {
-					sessionStorage.setItem('logout', false)
-					return true
-				},
-			})
-			.catch((error) => console.log(error))
+		instance.loginRedirect(loginRequest).catch((error) => console.log(error))
 	}
 
-	const isAuthenticated = useIsAuthenticated()
-	console.log(isAuthenticated, inProgress)
+	if (inProgress === InteractionStatus.None && !isAuthenticated) {
+		// instance.loginRedirect(loginRequest);
+		handleLoginRedirect()
+	}
+
 	useEffect(() => {
-		console.log(
-			'Interaction',
-			JSON.stringify(InteractionStatus),
-			JSON.stringify(InteractionType)
-		)
-		console.log('in use effect', isAuthenticated)
-		if (
-			!isAuthenticated &&
-			(inProgress === 'startup' || inProgress === 'handleRedirect')
-		) {
-			console.log('redirect')
-			handleLoginRedirect()
+		// Check if account object exists
+		if (account) {
+			// If it does then acquire an accessToken
+			instance
+				.acquireTokenSilent({
+					...loginRequest,
+					account: account,
+				})
+				.then((response) => {
+					console.log('acquireTokenSilent response', response)
+					// axios
+					// 	.post('/api/v2/auth/aad_token/validate/', {
+					// 		access_token: response.accessToken,
+					// 		id_token: response.idToken,
+					// 		oid: response.uniqueId,
+					// 	})
+					// 	.then((response) => {
+					// 		console.log(response.data)
+					// 	})
+					// 	.catch((error) => {
+					// 		console.log(error)
+					// 	})
+				})
 		}
-	})
+	}, [])
 
 	const { window } = props
 	const [mobileOpen, setMobileOpen] = React.useState(false)
@@ -141,6 +149,7 @@ const NavigationBar = (props) => {
 					<Box sx={{ display: { xs: 'none', sm: 'block' } }}>
 						{navItems.map((item, index) => (
 							<Button
+								disableRipple
 								onClick={navigationHandler.bind(this, item.route)}
 								key={index}
 								sx={{ color: '#fff' }}

@@ -74,6 +74,7 @@
 		"eslint-plugin-react": "^7.33.2",
 		"eslint-plugin-react-hooks": "^4.6.0",
 		"file-loader": "^6.2.0",
+		"prettier": "^3.0.3",
 		"prop-types": "^15.8.1",
 		"storybook": "^7.0.10",
 		"webpack": "^5.74.0"
