@@ -1,5 +1,5 @@
-import Button from 'components/Buttons/Button'
 import { useMsal } from '@azure/msal-react'
+import Button from 'components/common/Buttons/Button'
 import { useNavigate } from 'react-router-dom'
 const ErrorPage = () => {
 	const { instance } = useMsal()

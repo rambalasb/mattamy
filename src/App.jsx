@@ -3,7 +3,7 @@ import { Container, CssBaseline, ThemeProvider } from '@mui/material'
 import basicTheme from './theme'
 import AppRoutes from 'Routes'
 import { MsalProvider } from '@azure/msal-react'
-import { PageLayout } from 'components/PageLayout'
+import { PageLayout } from 'components/layout/PageLayout/PageLayout'
 
 const App = ({ instance }) => (
 	<main>

@@ -4,8 +4,8 @@ import MuiAccordion from '@mui/material/Accordion'
 import MuiAccordionSummary from '@mui/material/AccordionSummary'
 import MuiAccordionDetails from '@mui/material/AccordionDetails'
 import Typography from '@mui/material/Typography'
-import { ReactComponent as AddIcon } from 'assets/svgs/common/add.svg'
-import { ReactComponent as RemoveIcon } from 'assets/svgs/common/remove.svg'
+import { ReactComponent as AddIcon } from 'assets/svgs/add.svg'
+import { ReactComponent as RemoveIcon } from 'assets/svgs/remove.svg'
 import { useMediaQuery } from '@mui/material'
 
 const Accordion = styled((props) => (

@@ -26,6 +26,7 @@ const basicTheme = createTheme({
 		functional: {
 			alert: '#FEDD00',
 			urgency: '#CE0037',
+			success: '#007A53',
 		},
 	},
 	typography: typography,

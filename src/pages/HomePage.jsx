@@ -12,9 +12,9 @@ import NavButton from 'components/common/Buttons/NavButton'
 export const HomePage = () => {
 	const { instance } = useMsal()
 	const activeAccount = instance.getActiveAccount()
-	if (activeAccount) {
-		console.log(activeAccount.idTokenClaims)
-	}
+	// if (activeAccount) {
+	// 	console.log(activeAccount.idTokenClaims)
+	// }
 
 	const accordianData = [
 		{

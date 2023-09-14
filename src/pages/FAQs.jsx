@@ -3,6 +3,7 @@ import useMediaQuery from '@mui/material/useMediaQuery'
 import { ControlledAccordion } from 'components/common/Accordian/ControlledAccordian'
 import { useEffect, useMemo, useState } from 'react'
 import { Chip } from 'components/common/Chip/Chip'
+import { Dropdown } from 'components/common/Dropdown/Dropdown'
 
 export const FAQs = () => {
 	const matches = useMediaQuery((theme) => theme.breakpoints.down('sm'))
@@ -95,7 +96,7 @@ export const FAQs = () => {
 	}, [allQuestions])
 
 	// Filter FAQ by Category
-	const filterHandler = (selectedFilter, index) => {
+	const filterHandler = (selectedFilterType, index) => {
 		// Change Button State
 		if (index !== null) {
 			filterOptions.map((f, i) =>
@@ -104,14 +105,18 @@ export const FAQs = () => {
 			setFilterOptions(filterOptions)
 		}
 		// Filter Question based on selection or all questions
-		if (selectedFilter.type === 'all') {
+		if (selectedFilterType === 'all') {
 			setQuestions(allQuestions)
 		} else {
 			let filteredQuestions = allQuestions.filter(
-				(q) => q.type === selectedFilter.type
+				(q) => q.type === selectedFilterType
 			)
 			setQuestions(filteredQuestions)
 		}
+	}
+
+	const handleSelectionUpdate = (selectedFiter) => {
+		filterHandler(selectedFiter, null)
 	}
 	return (
 		<Box
@@ -139,7 +144,15 @@ export const FAQs = () => {
 			</div>
 
 			{/* Mobile View of Filters - Dropdown menu */}
-			{matches && <div>Mobile Screen</div>}
+			{matches && (
+				<div style={{ marginBottom: '24px' }}>
+					<Dropdown
+						variant="secondary"
+						values={filterOptions}
+						onSelectionUpdate={handleSelectionUpdate}
+					></Dropdown>
+				</div>
+			)}
 
 			{/* Desktop View of Filters - Buttons */}
 			{!matches && filterOptions && (
@@ -148,7 +161,7 @@ export const FAQs = () => {
 						return (
 							<Chip
 								key={index}
-								onClick={() => filterHandler(item, index)}
+								onClick={() => filterHandler(item.type, index)}
 								style={{ marginRight: '8px' }}
 								label={item.label + ' (' + item.count + ')'}
 								variant={

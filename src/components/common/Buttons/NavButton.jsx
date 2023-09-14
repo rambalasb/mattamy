@@ -3,7 +3,6 @@ import { Button as MuiButton } from '@mui/material'
 import { styled } from '@mui/system'
 
 const StyledButton = styled(MuiButton)(({ theme, variant, ...props }) => {
-
 	return {
 		fontFamily: 'TradeGothicBoldCondensed',
 		fontWeight: 'bold',
@@ -21,7 +20,7 @@ const StyledButton = styled(MuiButton)(({ theme, variant, ...props }) => {
 		'&:hover': {
 			borderBottom: '2px solid',
 			boxShadow: 'none',
-			backgroundColor: theme.palette.common.white
+			backgroundColor: theme.palette.common.white,
 		},
 		borderRadius: '0px',
 		gap: '8px',
