@@ -8,6 +8,7 @@ import { ReactComponent as MilestoneIconConstruction } from 'assets/svgs/milesto
 import { ReactComponent as MilestoneIconKitchenCabinets } from 'assets/svgs/milestoneIconKitchenCabinets.svg'
 import { ReactComponent as MilestoneIconRoof } from 'assets/svgs/milestoneIconRoof.svg'
 import { ReactComponent as MilestoneIconFrameWalk } from 'assets/svgs/milestoneIconFrameWalk.svg'
+import BirthdayAnimation from 'assets/images/Birthday.gif'
 
 // TODO: replace this with actual milestone data
 const milestones = [
@@ -46,6 +47,8 @@ const milestones = [
 const DisplayMilestones = () => {
 	const [hovered, setHovered] = useState()
 	const [activeMilestoneIndex, setActiveMilestoneIndex] = useState(1)
+	const [isCelebrating, setIsCelebrating] = useState(false)
+	// TODO: set timer for celerating
 
 	const alignments = [
 		{ justifyContent: 'center' },
@@ -105,6 +108,20 @@ const DisplayMilestones = () => {
 							activeMilestoneIndex={activeMilestoneIndex}
 							currentIndex={index}
 						/>
+						{/* Celerating */}
+						{isCelebrating && activeMilestoneIndex === index && (
+							<img
+								src={BirthdayAnimation}
+								style={{
+									width: '452px',
+									height: '326px',
+									top: '-100px', // 326/2-64
+									left: '-162px', // 452/2-64
+									position: 'absolute',
+									angle: '-180 deg',
+								}}
+							/>
+						)}
 						{/* Text */}
 						<MilestoneText
 							title={milestone.title}
