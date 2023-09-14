@@ -42,9 +42,9 @@ const textTransformation = [
 	},
 ]
 
-const transformDuration = 1000
+const transformDuration = 600
 
-const bounceEffect = 'cubic-bezier(0.175, 0.885, 0.32, 1.275)'
+const bounceEffect = 'cubic-bezier(0.68, -0.55, 0.27, 1.55)'
 
 const MilestoneText = ({
 	title,
