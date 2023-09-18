@@ -1,6 +1,6 @@
 import AccountSupportPage from 'pages/AccountSupportPage'
 import ErrorPage from 'pages/ErrorPage'
-import { FAQs } from 'pages/FAQs'
+import { FAQs } from 'pages/FAQs/FAQs'
 import { HomePage } from 'pages/HomePage'
 import MyJourneyPage from 'pages/MyJourney'
 import { Routes, Route } from 'react-router-dom'

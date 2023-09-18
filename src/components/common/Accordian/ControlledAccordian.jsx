@@ -10,7 +10,7 @@ import { useMediaQuery } from '@mui/material'
 
 const Accordion = styled((props) => (
 	<MuiAccordion disableGutters elevation={0} square {...props} />
-))(({ theme }) => ({
+))(() => ({
 	marginBottom: '32px',
 }))
 
