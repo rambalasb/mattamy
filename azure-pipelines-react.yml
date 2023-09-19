@@ -44,7 +44,6 @@ stages:
   jobs:
   - deployment: Deploy
     displayName: 'Deploy'
-    environment: Dev
     pool:
       vmImage: ubuntu-latest
     strategy:
