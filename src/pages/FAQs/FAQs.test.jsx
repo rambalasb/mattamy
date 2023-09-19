@@ -55,7 +55,11 @@ describe('FAQs Component', () => {
 	})
 
 	test('clicking a filter updates questions', () => {
-		render(<FAQs />)
+		render(
+			<ThemeProvider theme={basicTheme}>
+				<FAQs />{' '}
+			</ThemeProvider>
+		)
 		const filterOption = screen.getByText(/Profile Information/)
 		fireEvent.click(filterOption)
 
@@ -64,6 +68,4 @@ describe('FAQs Component', () => {
 		)
 		expect(questionElement).toBeInTheDocument()
 	})
-
-	// Add more test cases as needed...
 })
