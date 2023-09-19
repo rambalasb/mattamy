@@ -107,44 +107,42 @@ export const HomePage = () => {
 	}
 	return (
 		<>
-			<AuthenticatedTemplate>
-				<Typography variant="h6">User Details</Typography>
-				{/* {activeAccount ? <div>{activeAccount.idTokenClaims}</div> : null} */}
-				{activeAccount
-					? Object.keys(activeAccount.idTokenClaims).map((key, index) => {
-							return (
-								<div key={key}>
-									{key} ----- {activeAccount.idTokenClaims[key]}
-								</div>
-							)
-					  })
-					: null}
-				<section style={{ width: '20%' }}>
-					<Button>Button</Button>
-					<Button onClick={handleFileDownload} variant="primary-dark">
-						DOWNLOAD FILE
-					</Button>
-					<Button onClick={redirectToError} variant="secondary">
-						Redirect to Error
-					</Button>
-					<Button variant="secondary-dark">Button</Button>
-					<Button disable>Button</Button>
-				</section>
-				<section>
-					<NavButton>My home</NavButton>
-				</section>
-				<br></br>
-				<Typography variant="titleLarge">Accordian Component</Typography>
-				<ControlledAccordion
-					accordianData={accordianData}
-				></ControlledAccordion>
-				<br></br>
-				<Typography variant="titleLarge">Completion Card Component</Typography>
-				<CompletionCard tasks={tasks}></CompletionCard>
-				<br></br>
-				<Typography variant="titleLarge">Checklist Card Component</Typography>
-				<ChecklistCard checklist={checklist}></ChecklistCard>
-			</AuthenticatedTemplate>
+			{/* <AuthenticatedTemplate> */}
+			<Typography variant="h6">User Details</Typography>
+			{/* {activeAccount ? <div>{activeAccount.idTokenClaims}</div> : null} */}
+			{activeAccount
+				? Object.keys(activeAccount.idTokenClaims).map((key, index) => {
+						return (
+							<div key={key}>
+								{key} ----- {activeAccount.idTokenClaims[key]}
+							</div>
+						)
+				  })
+				: null}
+			<section style={{ width: '20%' }}>
+				<Button>Button</Button>
+				<Button onClick={handleFileDownload} variant="primary-dark">
+					DOWNLOAD FILE
+				</Button>
+				<Button onClick={redirectToError} variant="secondary">
+					Redirect to Error
+				</Button>
+				<Button variant="secondary-dark">Button</Button>
+				<Button disable>Button</Button>
+			</section>
+			<section>
+				<NavButton>My home</NavButton>
+			</section>
+			<br></br>
+			<Typography variant="titleLarge">Accordian Component</Typography>
+			<ControlledAccordion accordianData={accordianData}></ControlledAccordion>
+			<br></br>
+			<Typography variant="titleLarge">Completion Card Component</Typography>
+			<CompletionCard tasks={tasks}></CompletionCard>
+			<br></br>
+			<Typography variant="titleLarge">Checklist Card Component</Typography>
+			<ChecklistCard checklist={checklist}></ChecklistCard>
+			{/* </AuthenticatedTemplate> */}
 		</>
 	)
 }

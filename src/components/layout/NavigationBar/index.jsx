@@ -44,45 +44,45 @@ const navItems = [
 ]
 
 const NavigationBar = (props) => {
-	const isAuthenticated = useIsAuthenticated()
+	// const isAuthenticated = useIsAuthenticated()
 	const { instance, inProgress, accounts } = useMsal()
-	const account = useAccount(accounts[0] || {})
+	// const account = useAccount(accounts[0] || {})
 
-	const handleLoginRedirect = async () => {
-		instance.loginRedirect(loginRequest).catch((error) => console.log(error))
-	}
+	// const handleLoginRedirect = async () => {
+	// 	instance.loginRedirect(loginRequest).catch((error) => console.log(error))
+	// }
 
-	if (inProgress === InteractionStatus.None && !isAuthenticated) {
-		// instance.loginRedirect(loginRequest);
-		handleLoginRedirect()
-	}
+	// if (inProgress === InteractionStatus.None && !isAuthenticated) {
+	// 	// instance.loginRedirect(loginRequest);
+	// 	handleLoginRedirect()
+	// }
 
-	useEffect(() => {
-		// Check if account object exists
-		if (account) {
-			// If it does then acquire an accessToken
-			instance
-				.acquireTokenSilent({
-					...loginRequest,
-					account: account,
-				})
-				.then((response) => {
-					console.log('acquireTokenSilent response', response)
-					// axios
-					// 	.post('/api/v2/auth/aad_token/validate/', {
-					// 		access_token: response.accessToken,
-					// 		id_token: response.idToken,
-					// 		oid: response.uniqueId,
-					// 	})
-					// 	.then((response) => {
-					// 		console.log(response.data)
-					// 	})
-					// 	.catch((error) => {
-					// 		console.log(error)
-					// 	})
-				})
-		}
-	}, [])
+	// useEffect(() => {
+	// 	// Check if account object exists
+	// 	if (account) {
+	// 		// If it does then acquire an accessToken
+	// 		instance
+	// 			.acquireTokenSilent({
+	// 				...loginRequest,
+	// 				account: account,
+	// 			})
+	// 			.then((response) => {
+	// 				console.log('acquireTokenSilent response', response)
+	// 				// axios
+	// 				// 	.post('/api/v2/auth/aad_token/validate/', {
+	// 				// 		access_token: response.accessToken,
+	// 				// 		id_token: response.idToken,
+	// 				// 		oid: response.uniqueId,
+	// 				// 	})
+	// 				// 	.then((response) => {
+	// 				// 		console.log(response.data)
+	// 				// 	})
+	// 				// 	.catch((error) => {
+	// 				// 		console.log(error)
+	// 				// 	})
+	// 			})
+	// 	}
+	// }, [])
 
 	const { window } = props
 	const [mobileOpen, setMobileOpen] = React.useState(false)
