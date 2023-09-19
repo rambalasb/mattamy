@@ -6,22 +6,55 @@
 trigger:
 - main
 
-pool:
-  vmImage: ubuntu-latest
+stages:
+- stage: Build
+  displayName: 'Build stage'
+  jobs:
+  - job: Build
+    displayName: 'Build'
+    pool:
+      vmImage: ubuntu-latest
+    steps:
+    - task: NodeTool@0
+      inputs:
+        versionSpec: '20.x'
+      displayName: 'Install Node.js'
 
-steps:
-- task: NodeTool@0
-  inputs:
-    versionSpec: '20.x'
-  displayName: 'Install Node.js'
+    - script: |
+        npm install
+        npm run build
+      displayName: 'npm install and build'
 
-- script: |
-    npm install
-    npm run build
-  displayName: 'npm install and build'
+    - task: ArchiveFiles@2
+      displayName: 'Archive files'
+      inputs:
+        rootFolderOrFile: '$(System.DefaultWorkingDirectory)/build/'
+        includeRootFolder: false
+        archiveType: 'zip'
+        archiveFile: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
+        replaceExistingArchive: true
 
-- task: PublishBuildArtifacts@1
-  inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    ArtifactName: 'React'
-    publishLocation: 'Container'
+    - upload: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
+      artifact: 'drop'
+
+- stage: Deploy
+  displayName: 'Deploy stage'
+  dependsOn: Build
+  condition: succeeded()
+  jobs:
+  - deployment: Deploy
+    displayName: 'Deploy'
+    environment: 'Dev'
+    pool:
+      vmImage: ubuntu-latest
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - task: AzureWebApp@1
+            displayName: 'Deploy to Azure Web App'
+            inputs:
+              azureSubscription: 'Mattamy Homes DEV/QA/UAT'
+              appType: 'webAppWindows'
+              appName: 'mhcp-react-ui-dev-webapp'
+              package: $(Pipeline.Workspace)/drop/$(Build.BuildId).zip
