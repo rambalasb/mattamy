@@ -44,7 +44,7 @@ stages:
   jobs:
   - deployment: Deploy
     displayName: 'Deploy'
-    environment: Dev
+    Environment: Dev
     pool:
       vmImage: ubuntu-latest
     strategy:
@@ -54,7 +54,7 @@ stages:
           - task: AzureWebApp@1
             displayName: 'Deploy to Azure Web App'
             inputs:
-              azureSubscription: 'Mattamy Homes DEV/QA/UAT'
+              azureSubscription: 'sp-mattamy-mhcp-devops'
               appType: 'webAppWindows'
               appName: 'mhcp-react-ui-dev-webapp'
               package: $(Pipeline.Workspace)/drop/$(Build.BuildId).zip
