@@ -57,6 +57,10 @@ stages:
               destinationFolder: '$(Pipeline.Workspace)/extracted'
               cleanDestinationFolder: true
 
+          - script: |
+              # Optional: Move files up one level if they are in a subfolder
+              mv $(Pipeline.Workspace)/extracted/subfolder/* $(Pipeline.Workspace)/extracted/
+              
           - task: AzureWebApp@1
             displayName: 'Deploy to Azure Web App'
             inputs:
