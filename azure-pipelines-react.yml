@@ -4,74 +4,74 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 
 trigger:
-- main
+  - main
 
 stages:
-- stage: Build
-  displayName: 'Build stage'
-  jobs:
-  - job: Build
-    displayName: 'Build'
-    pool:
-      vmImage: ubuntu-latest
-    steps:
-    - task: NodeTool@0
-      inputs:
-        versionSpec: '18.x'
-      displayName: 'Install Node.js'
-
-    - script: |
-        npm install
-        npm run build
-      displayName: 'npm install and build'
-
-    # Add this step for Prettier
-    - script: |
-        npm install --save-dev --save-exact prettier
-        npx prettier --check "src/**/*.js"
-      displayName: 'Run Prettier'
-    
-    - task: ArchiveFiles@2
-      displayName: 'Archive files'
-      inputs:
-        rootFolderOrFile: '$(System.DefaultWorkingDirectory)/build/'
-        includeRootFolder: false
-        archiveType: 'zip'
-        archiveFile: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
-        replaceExistingArchive: true
-
-    - upload: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
-      artifact: 'drop'
-
-- stage: Deploy
-  displayName: 'Deploy stage'
-  dependsOn: Build
-  condition: succeeded()
-  jobs:
-  - deployment: Deploy
-    displayName: 'Deploy'
-    environment: Dev
-    pool:
-      vmImage: ubuntu-latest
-    strategy:
-      runOnce:
-        deploy:
-          steps:
-          - task: ExtractFiles@1
+  - stage: Build
+    displayName: 'Build stage'
+    jobs:
+      - job: Build
+        displayName: 'Build'
+        pool:
+          vmImage: ubuntu-latest
+        steps:
+          - task: NodeTool@0
             inputs:
-              archiveFilePatterns: '$(Pipeline.Workspace)/drop/$(Build.BuildId).zip'
-              destinationFolder: '$(Pipeline.Workspace)/extracted'
-              cleanDestinationFolder: true
+              versionSpec: '18.x'
+            displayName: 'Install Node.js'
 
           - script: |
-              if [ -d "$(Pipeline.Workspace)/extracted/subfolder" ]; then
-                mv $(Pipeline.Workspace)/extracted/subfolder/* $(Pipeline.Workspace)/extracted/
-              fi
+              npm ci --legacy-peer-deps
+              npm run build
+            displayName: 'npm install and build'
 
-          - task: AzureWebApp@1
-            displayName: 'Deploy to Azure Web App'
+          # Add this step for Prettier
+          - script: |
+              npm install --save-dev --save-exact prettier
+              npx prettier --check "src/**/*.js"
+            displayName: 'Run Prettier'
+
+          - task: ArchiveFiles@2
+            displayName: 'Archive files'
             inputs:
-              azureSubscription: 'sp-mattamy-mhcp-devops'
-              appType: 'webAppLinux'
-              appName: 'mhcp-react-ui-dev-webapp'
-              package: '$(Pipeline.Workspace)/extracted'
+              rootFolderOrFile: '$(System.DefaultWorkingDirectory)/build/'
+              includeRootFolder: false
+              archiveType: 'zip'
+              archiveFile: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
+              replaceExistingArchive: true
+
+          - upload: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
+            artifact: 'drop'
+
+  - stage: Deploy
+    displayName: 'Deploy stage'
+    dependsOn: Build
+    condition: succeeded()
+    jobs:
+      - deployment: Deploy
+        displayName: 'Deploy'
+        environment: Dev
+        pool:
+          vmImage: ubuntu-latest
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - task: ExtractFiles@1
+                  inputs:
+                    archiveFilePatterns: '$(Pipeline.Workspace)/drop/$(Build.BuildId).zip'
+                    destinationFolder: '$(Pipeline.Workspace)/extracted'
+                    cleanDestinationFolder: true
+
+                - script: |
+                    if [ -d "$(Pipeline.Workspace)/extracted/subfolder" ]; then
+                      mv $(Pipeline.Workspace)/extracted/subfolder/* $(Pipeline.Workspace)/extracted/
+                    fi
+
+                - task: AzureWebApp@1
+                  displayName: 'Deploy to Azure Web App'
+                  inputs:
+                    azureSubscription: 'sp-mattamy-mhcp-devops'
+                    appType: 'webAppLinux'
+                    appName: 'mhcp-react-ui-dev-webapp'
+                    package: '$(Pipeline.Workspace)/extracted'
