@@ -17,8 +17,8 @@ const StyledButton = styled(MuiButton)(({ theme, variant, ...props }) => {
 			borderColor = theme.palette.primary.main
 			break
 		case 'secondary-dark':
-			textColor = theme.palette.secondary.main
-			bgColor = theme.palette.common.white
+			textColor = theme.palette.common.white
+			bgColor = theme.palette.secondary.main
 			borderColor = theme.palette.common.white
 			break
 		case 'primary':
@@ -55,7 +55,8 @@ const StyledButton = styled(MuiButton)(({ theme, variant, ...props }) => {
 		borderRadius: '12px',
 		gap: '8px',
 		padding: '18px 56px',
-		// width: '100%',
+		textWrap: 'nowrap',
+		...props,
 	}
 })
 

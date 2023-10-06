@@ -1,7 +1,7 @@
 import { styled } from '@mui/system'
 import { Chip as MuiChip } from '@mui/material'
 
-const CustomChip = styled(MuiChip)(({ theme, variant, ...props }) => {
+const CustomChip = styled(MuiChip)(({ theme, variant }) => {
 	// Varients
 	let textColor, bgColor, borderColor
 	switch (variant) {
@@ -52,6 +52,8 @@ const CustomChip = styled(MuiChip)(({ theme, variant, ...props }) => {
 	}
 })
 
-export const Chip = ({ ...props }) => {
+const Chip = ({ ...props }) => {
 	return <CustomChip {...props}></CustomChip>
 }
+
+export default Chip

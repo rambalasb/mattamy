@@ -6,7 +6,6 @@
 export const createClaimsTable = (claims) => {
 	let claimsObj = {}
 	let index = 0
-	console.log(claims)
 	Object.keys(claims).forEach((key) => {
 		if (typeof claims[key] !== 'string' && typeof claims[key] !== 'number')
 			return

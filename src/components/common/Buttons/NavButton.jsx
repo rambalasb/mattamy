@@ -2,7 +2,7 @@ import React from 'react'
 import { Button as MuiButton } from '@mui/material'
 import { styled } from '@mui/system'
 
-const StyledButton = styled(MuiButton)(({ theme, variant, ...props }) => {
+const StyledButton = styled(MuiButton)(({ theme }) => {
 	return {
 		fontFamily: 'TradeGothicBoldCondensed',
 		fontWeight: 'bold',

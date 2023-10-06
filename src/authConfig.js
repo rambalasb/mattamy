@@ -10,40 +10,17 @@ import { LogLevel } from '@azure/msal-browser'
  * To learn more about user flows, visit: https://docs.microsoft.com/en-us/azure/active-directory-b2c/user-flow-overview
  * To learn more about custom policies, visit: https://docs.microsoft.com/en-us/azure/active-directory-b2c/custom-policy-overview
  */
-// export const b2cPolicies = {
-//   names: {
-//     signUpSignIn: "B2C_1_susi_v2",
-//     forgotPassword: "B2C_1_reset_v3",
-//     editProfile: "B2C_1_edit_profile_v2",
-//   },
-//   authorities: {
-//     signUpSignIn: {
-//       authority:
-//         "https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/b2c_1_susi_v2",
-//     },
-//     forgotPassword: {
-//       authority:
-//         "https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/B2C_1_reset_v3",
-//     },
-//     editProfile: {
-//       authority:
-//         "https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/b2c_1_edit_profile_v2",
-//     },
-//   },
-//   authorityDomain: "fabrikamb2c.b2clogin.com",
-// };
 
 export const b2cPolicies = {
 	names: {
-		signUpSignIn: 'B2C_1_customerportal-dev',
+		signUpSignIn: process.env.REACT_APP_ADB2C_SIGNIN_SIGNUP_POLICY,
 	},
 	authorities: {
 		signUpSignIn: {
-			authority:
-				'https://mattamycorplower.b2clogin.com/mattamycorplower.onmicrosoft.com/B2C_1_customerportal-dev',
+			authority: `https://${process.env.REACT_APP_ADB2C_TENENT}.b2clogin.com/${process.env.REACT_APP_ADB2C_TENENT}.onmicrosoft.com/${process.env.REACT_APP_ADB2C_SIGNIN_SIGNUP_POLICY}`,
 		},
 	},
-	authorityDomain: 'mattamycorplower.b2clogin.com',
+	authorityDomain: `${process.env.REACT_APP_ADB2C_TENENT}.b2clogin.com`,
 }
 
 /**
@@ -53,7 +30,7 @@ export const b2cPolicies = {
  */
 export const msalConfig = {
 	auth: {
-		clientId: '15c2168a-5830-4367-984d-96f06fd9f086',
+		clientId: process.env.REACT_APP_ADB2C_CLIENT_ID,
 		authority: b2cPolicies.authorities.signUpSignIn.authority, // Choose SUSI as your default authority.
 		knownAuthorities: [b2cPolicies.authorityDomain], // Mark your B2C tenant's domain as trusted.
 		redirectUri: '/', // You must register this URI on Azure Portal/App Registration. Defaults to window.location.origin
@@ -89,33 +66,4 @@ export const msalConfig = {
 			},
 		},
 	},
-}
-
-/**
- * Add here the endpoints and scopes when obtaining an access token for protected web APIs. For more information, see:
- * https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-browser/docs/resources-and-scopes.md
- */
-export const protectedResources = {
-	apiTodoList: {
-		endpoint: 'http://localhost:5000/api/todolist',
-		scopes: {
-			read: ['https://fabrikamb2c.onmicrosoft.com/TodoList/ToDoList.Read'],
-			write: [
-				'https://fabrikamb2c.onmicrosoft.com/TodoList/ToDoList.ReadWrite',
-			],
-		},
-	},
-}
-
-/**
- * Scopes you add here will be prompted for user consent during sign-in.
- * By default, MSAL.js will add OIDC scopes (openid, profile, email) to any login request.
- * For more information about OIDC scopes, visit:
- * https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-permissions-and-consent#openid-connect-scopes
- */
-export const loginRequest = {
-	scopes: [
-		// ...protectedResources.apiTodoList.scopes.read,
-		// ...protectedResources.apiTodoList.scopes.write,
-	],
 }

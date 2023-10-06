@@ -4,6 +4,6 @@
 		"module": "CommonJS",
 		"jsx": "react"
 	},
-	"include": ["src"],
+	"include": ["src", "tests/components/pages/FAQs/FAQs.test.jsx"],
 	"exclude": ["node_modules"]
 }

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { styled } from '@mui/system'
 import { Chip as MuiChip } from '@mui/material'
 
-const CustomChip = styled(MuiChip)(({ theme, variant, ...props }) => {
+const CustomChip = styled(MuiChip)(({ theme, variant }) => {
 	// Varients
 	let bgColor
 	switch (variant) {
@@ -27,7 +27,7 @@ const CustomChip = styled(MuiChip)(({ theme, variant, ...props }) => {
 		borderRadius: '16px',
 		gap: '10px',
 		backgroundColor: bgColor,
-		fontFamily: 'Graphie',
+		fontFamily: 'GraphieRegular',
 		fontSize: '12px',
 		fontWeight: 600,
 		lineHeight: '16px',
@@ -35,7 +35,7 @@ const CustomChip = styled(MuiChip)(({ theme, variant, ...props }) => {
 		textAlign: 'left',
 		color: theme.palette.common.white,
 		textTransform: 'uppercase',
-		overflow: 'unset',
+		span: { overflow: 'visible' },
 	}
 })
 

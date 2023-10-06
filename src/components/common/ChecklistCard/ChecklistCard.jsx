@@ -23,7 +23,7 @@ const CardContent = styled(MuiCardContent)(({ theme }) => ({
 	},
 }))
 
-export const ChecklistCard = ({ checklist }) => {
+const ChecklistCard = ({ checklist }) => {
 	return (
 		<>
 			{checklist.map((checklistItem, index) => {
@@ -67,3 +67,5 @@ export const ChecklistCard = ({ checklist }) => {
 		</>
 	)
 }
+
+export default ChecklistCard

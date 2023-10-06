@@ -8,7 +8,7 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
 import { Typography } from '@mui/material'
 import { useEffect } from 'react'
 
-const CustomInputBase = styled(InputBase)(({ theme, variant, ...props }) => {
+const CustomInputBase = styled(InputBase)(({ theme, variant }) => {
 	// Varients
 	let textColor, bgColor, borderColor
 	switch (variant) {
@@ -55,7 +55,7 @@ const CustomInputBase = styled(InputBase)(({ theme, variant, ...props }) => {
 	}
 })
 
-export const Dropdown = ({ values, ...props }) => {
+const Dropdown = ({ values, ...props }) => {
 	const [selectedFilter, setSelectedFilter] = React.useState('')
 
 	// Set default value for dropdown
@@ -100,3 +100,5 @@ export const Dropdown = ({ values, ...props }) => {
 		</div>
 	)
 }
+
+export default Dropdown

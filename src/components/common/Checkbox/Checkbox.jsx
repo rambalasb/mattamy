@@ -26,7 +26,7 @@ const BpCheckbox = (props) => {
 	)
 }
 
-export default function CustomizedCheckbox({ defaultValue }) {
+const CustomizedCheckbox = ({ defaultValue }) => {
 	const [checked, setChecked] = React.useState(defaultValue)
 	const handleChange = (event) => {
 		setChecked(event.target.checked)
@@ -43,3 +43,5 @@ export default function CustomizedCheckbox({ defaultValue }) {
 		</>
 	)
 }
+
+export default CustomizedCheckbox

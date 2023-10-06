@@ -4,18 +4,19 @@ import MuiAccordion from '@mui/material/Accordion'
 import MuiAccordionSummary from '@mui/material/AccordionSummary'
 import MuiAccordionDetails from '@mui/material/AccordionDetails'
 import Typography from '@mui/material/Typography'
-import { ReactComponent as AddIcon } from 'assets/svgs/add.svg'
-import { ReactComponent as RemoveIcon } from 'assets/svgs/remove.svg'
+import { ReactComponent as AddIcon } from 'assets/svgs/actions/add.svg'
+import { ReactComponent as RemoveIcon } from 'assets/svgs/actions/remove.svg'
 import { useMediaQuery } from '@mui/material'
 
 const Accordion = styled((props) => (
-	<MuiAccordion disableGutters elevation={0} square {...props} />
+	<MuiAccordion disableGutters elevation={0} {...props} />
 ))(() => ({
 	marginBottom: '32px',
 }))
 
 const AccordionSummary = styled((props) => <MuiAccordionSummary {...props} />)(
 	({ theme }) => ({
+		// borderRadius: expanded ? '8px' : '8px 8px 0 0',
 		padding: theme.spacing('40px'),
 		color: theme.palette.primary.main,
 		backgroundColor: theme.palette.primary.lightBlue,
@@ -48,7 +49,7 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
 	},
 }))
 
-export const ControlledAccordion = ({ accordianData }) => {
+const ControlledAccordion = ({ accordianData }) => {
 	const [expanded, setExpanded] = React.useState(0)
 	const isMobileScreen = useMediaQuery((theme) => theme.breakpoints.down('sm'))
 	const handleChange = (panel) => (event, newExpanded) => {
@@ -90,3 +91,5 @@ export const ControlledAccordion = ({ accordianData }) => {
 		</div>
 	)
 }
+
+export default ControlledAccordion

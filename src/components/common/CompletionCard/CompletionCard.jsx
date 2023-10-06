@@ -6,7 +6,7 @@ import Grid from '@mui/material/Grid'
 import ChecklistImage from 'assets/images/Checklist.png'
 import Box from '@mui/material/Box'
 import Button from 'components/common/Buttons/Button'
-import { ReactComponent as CompletedIcon } from 'assets/svgs/completed.svg'
+import { ReactComponent as CompletedIcon } from 'assets/svgs/actions/completed.svg'
 
 const Card = styled(MuiCard)(({ theme }) => ({
 	padding: theme.spacing('24px'),
@@ -25,7 +25,7 @@ const CardContent = styled(MuiCardContent)(({ theme }) => ({
 	},
 }))
 
-export const CompletionCard = ({ tasks }) => {
+const CompletionCard = ({ tasks }) => {
 	return (
 		<>
 			{tasks.map((task, index) => {
@@ -72,3 +72,5 @@ export const CompletionCard = ({ tasks }) => {
 		</>
 	)
 }
+
+export default CompletionCard

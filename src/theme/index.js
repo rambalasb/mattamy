@@ -3,6 +3,7 @@ import TradeGothicBoldCondensed from 'assets/fonts/Trade-Gothic/TradeGothicLTPro
 import GraphieBook from 'assets/fonts/Graphie/Graphie-Book.ttf'
 import GraphieRegular from 'assets/fonts/Graphie/Graphie-Regular.ttf'
 import GraphieSemiBold from 'assets/fonts/Graphie/Graphie-SemiBold.ttf'
+import GraphieBold from 'assets/fonts/Graphie/Graphie-Bold.ttf'
 
 import { typography } from './typography'
 
@@ -26,7 +27,9 @@ const basicTheme = createTheme({
 		functional: {
 			alert: '#FEDD00',
 			urgency: '#CE0037',
+			urgency0_05: '#FDF2F5',
 			success: '#007A53',
+			success0_05: '#F2F8F6',
 		},
 	},
 	typography: typography,
@@ -62,6 +65,12 @@ const basicTheme = createTheme({
                 font-family: 'GraphieSemiBold'; # Graphie Semi Bold
                 font-style: normal;
                 src: url(${GraphieSemiBold}) format('truetype');
+            }
+
+			@font-face {
+                font-family: 'GraphieBold'; # Graphie Bold
+                font-style: normal;
+                src: url(${GraphieBold}) format('truetype');
             }
       `,
 		},
