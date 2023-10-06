@@ -25,12 +25,6 @@ stages:
               npm run build
             displayName: 'npm install and build'
 
-          # Add this step for Prettier
-          - script: |
-              npm install --save-dev --save-exact prettier
-              npx prettier --check "src/**/*.js"
-            displayName: 'Run Prettier'
-
           - task: ArchiveFiles@2
             displayName: 'Archive files'
             inputs:
@@ -71,7 +65,7 @@ stages:
                 - task: AzureWebApp@1
                   displayName: 'Deploy to Azure Web App'
                   inputs:
-                    azureSubscription: 'sp-mattamy-mhcp-devops'
+                    azureSubscription: 'Azure Subscription 1'
                     appType: 'webAppLinux'
-                    appName: 'mhcp-react-ui-dev-webapp'
+                    appName: 'react-app-mattamy'
                     package: '$(Pipeline.Workspace)/extracted'
